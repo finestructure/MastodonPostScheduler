@@ -2,7 +2,7 @@
 
 MastodonPostScheduler is a command line tool to schedule posts on a Mastodon instance.
 
-Usage:
+## Usage
 
 ```
 ❯ cat post.json
@@ -37,3 +37,23 @@ Connecting...
 Connected.
 Post '28329' deleted.
 ```
+
+## Installation
+
+### Mint
+
+You can install MastodonPostScheduler with [Mint](https://github.com/yonaskolb/Mint):
+
+```
+mint install finestructure/MastodonPostScheduler
+```
+
+### Make
+
+You can also build and install MastodonPostScheduler via the included Makefile by running:
+
+```
+make install
+This will copy the binary arena to /usr/local/bin.
+```
+

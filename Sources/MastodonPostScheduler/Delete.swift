@@ -18,7 +18,7 @@ extension MastodonPostScheduler {
     }
 
     static func delete(id: String, instance: URL, token: String) async throws {
-        print("Connecting...")
+        print("Connecting ...")
         let client = try await TootClient(connect: instance, accessToken: token)
         print("Connected.")
         try await client.deleteScheduledPost(id: id)

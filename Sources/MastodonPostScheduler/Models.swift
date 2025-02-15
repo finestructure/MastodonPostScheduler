@@ -19,11 +19,11 @@ enum Error: Swift.Error, CustomStringConvertible {
 }
 
 
-public struct Post {
-    public var text: String
-    public var scheduledAt: Date
-    public var instance: URL
-    public var language: String?
+struct Post {
+    var text: String
+    var scheduledAt: Date
+    var instance: URL
+    var language: String?
 
     static let dateFormat = "yyyy-MM-dd HH:mm"
     static var dateFormatter: DateFormatter {
@@ -32,7 +32,7 @@ public struct Post {
         return dateFormatter
     }
 
-    public init(contentsOf fileURL: URL) throws {
+    init(contentsOf fileURL: URL) throws {
         let data = try Data(contentsOf: fileURL)
         self = try JSONDecoder().decode(Post.self, from: data)
     }
@@ -47,7 +47,7 @@ extension Post: Decodable {
         case language
     }
     
-    public init(from decoder: any Decoder) throws {
+    init(from decoder: any Decoder) throws {
         let container: KeyedDecodingContainer<Post.CodingKeys> = try decoder.container(keyedBy: Post.CodingKeys.self)
         
         self.text = try container.decode(String.self, forKey: Post.CodingKeys.text)

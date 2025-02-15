@@ -9,11 +9,10 @@ extension MastodonPostScheduler {
         static let configuration = CommandConfiguration(abstract: "List scheduled posts.")
 
         @OptionGroup var options: Options
-        @Option var instance: URL
 
         mutating func run() async throws {
-            print("Listing scheduled posts on \(instance) ...")
-            try await MastodonPostScheduler.listPosts(instance: instance, token: options.token)
+            print("Listing scheduled posts on \(options.instance) ...")
+            try await MastodonPostScheduler.listPosts(instance: options.instance, token: options.token)
         }
     }
 
@@ -35,19 +34,4 @@ extension MastodonPostScheduler {
         }
     }
 
-}
-
-
-extension URL: @retroactive ExpressibleByArgument {
-    public init?(argument: String) {
-        let url = URL(string: argument)
-        guard let url else { return nil }
-        if url.scheme == nil {
-            let urlString = "https://" + url.absoluteString
-            guard let newURL = URL(string: urlString) else { return nil }
-            self = newURL
-        } else {
-            self = url
-        }
-    }
 }

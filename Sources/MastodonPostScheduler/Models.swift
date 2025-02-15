@@ -3,15 +3,12 @@ import Foundation
 
 enum Error: Swift.Error, CustomStringConvertible {
     case invalidDate(String)
-    case invalidURL(String)
     case missingKey(String, expectedFormat: String)
 
     var description: String {
         switch self {
             case .invalidDate(let string):
                 "Invalid date: '\(string)'. Expected format: '\(Post.dateFormat)'."
-            case .invalidURL(let url):
-                "Invalid URL: '\(url)'. Expected format: 'https://example.com'."
             case let .missingKey(key, expectedFormat: format):
                 "Missing key: '\(key)'. Expected format: '\(format)'."
         }
@@ -22,7 +19,6 @@ enum Error: Swift.Error, CustomStringConvertible {
 struct Post {
     var text: String
     var scheduledAt: Date
-    var instance: URL
     var language: String?
 
     static let dateFormat = "yyyy-MM-dd HH:mm"
@@ -58,22 +54,6 @@ extension Post: Decodable {
                 throw Error.invalidDate(dateString)
             }
             self.scheduledAt = date
-        }
-
-        do {
-            let url = try container.decode(URL.self, forKey: Post.CodingKeys.instance)
-            if url.scheme == nil {
-                let urlString = "https://" + url.absoluteString
-                guard let newURL = URL(string: urlString) else {
-                    throw Error.invalidURL(urlString)
-                }
-                self.instance = newURL
-            } else {
-                self.instance = url
-            }
-        } catch DecodingError.keyNotFound {
-            throw Error.missingKey(Post.CodingKeys.instance.stringValue,
-                                   expectedFormat: "https://example.com")
         }
 
         self.language = try container.decodeIfPresent(String.self, forKey: Post.CodingKeys.language)

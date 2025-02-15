@@ -1,4 +1,0 @@
-import MastodonPostSchedulerCore
-
-
-MastodonPostScheduler.main()

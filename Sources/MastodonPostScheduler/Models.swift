@@ -61,7 +61,7 @@ extension Post: Decodable {
         }
 
         do {
-            var url = try container.decode(URL.self, forKey: Post.CodingKeys.instance)
+            let url = try container.decode(URL.self, forKey: Post.CodingKeys.instance)
             if url.scheme == nil {
                 let urlString = "https://" + url.absoluteString
                 guard let newURL = URL(string: urlString) else {

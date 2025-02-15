@@ -20,9 +20,7 @@ extension MastodonPostScheduler {
     }
 
     static func schedulePost(_ post: Post, instance: URL, token: String) async throws -> ScheduledPost {
-        print("Connecting ...")
         let client = try await TootClient(connect: instance, accessToken: token)
-        print("Connected.")
         let params = ScheduledPostParams.init(
             text: post.text,
             visibility: .public,

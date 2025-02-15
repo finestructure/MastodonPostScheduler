@@ -17,9 +17,7 @@ extension MastodonPostScheduler {
     }
 
     static func listPosts(instance: URL, token: String) async throws {
-        print("Connecting ...")
         let client = try await TootClient(connect: instance, accessToken: token)
-        print("Connected.")
         let page = try await client.getScheduledPosts()
         var firstResult = true
         for post in page.result

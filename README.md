@@ -15,16 +15,12 @@ MastodonPostScheduler is a command line tool to schedule posts on a Mastodon ins
 ```
 ❯ mastodon-post-scheduler schedule --instance mas.to --token $MASTODON_ACCESS_TOKEN --input post.json
 Scheduling post at 2025-02-15 14:00:00 +0000 on https://mas.to ...
-Connecting ...
-Connected.
 Post scheduled, id: 28329
 ```
 
 ```
 ❯ mastodon-post-scheduler list --instance mas.to --token $MASTODON_ACCESS_TOKEN
 Listing scheduled posts on https://mas.to ...
-Connecting...
-Connected.
 scheduled at                |   id
 ---------------------------------------
 2025-02-15 14:00:00 +0000   |   28329
@@ -33,8 +29,6 @@ scheduled at                |   id
 ```
 ❯ mastodon-post-scheduler delete --instance mas.to --token $MASTODON_ACCESS_TOKEN --id 28329
 Delete post '28329' posts on https://mas.to ...
-Connecting...
-Connected.
 Post '28329' deleted.
 ```
 

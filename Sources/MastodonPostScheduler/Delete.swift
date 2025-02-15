@@ -12,7 +12,7 @@ extension MastodonPostScheduler {
         @Option var id: String
 
         mutating func run() async throws {
-            print("Delete post '\(id)' posts on \(options.instance) ...")
+            print("Deleting post '\(id)' posts on \(options.instance) ...")
             try await MastodonPostScheduler.delete(id: id, instance: options.instance, token: options.token)
         }
     }

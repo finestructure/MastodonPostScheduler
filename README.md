@@ -28,7 +28,7 @@ scheduled at                |   id
 
 ```
 ❯ mastodon-post-scheduler delete --instance mas.to --token $MASTODON_ACCESS_TOKEN --id 28329
-Delete post '28329' posts on https://mas.to ...
+Deleting post '28329' posts on https://mas.to ...
 Post '28329' deleted.
 ```
 
@@ -48,6 +48,7 @@ You can also build and install MastodonPostScheduler via the included Makefile b
 
 ```
 make install
-This will copy the binary arena to /usr/local/bin.
 ```
+
+This will copy the binary arena to /usr/local/bin.
 

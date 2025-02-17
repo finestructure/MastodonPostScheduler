@@ -32,6 +32,20 @@ Deleting post '28329' posts on https://mas.to ...
 Post '28329' deleted.
 ```
 
+## Post scheme
+
+The scheme of the JSON file for the `--input` flag is as follows:
+
+```swift
+struct Post {
+    var text: String
+    var scheduledAt: Date
+    var language: String?
+}
+```
+
+with the date format `yyyy-MM-dd HH:mm`. Dates are parsed with your locale's timezone.
+
 ## Installation
 
 ### Mint
